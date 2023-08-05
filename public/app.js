@@ -34,6 +34,16 @@ routemamba.register_http_routes([
     http_url_change: false,
     http_url: "/pricing",
   },
+  {
+    method: "GET",
+    meta_loader: true,
+    content_url: "/components/post",
+    data: {},
+    preloader: "loading...",
+    error_content: "error",
+    http_url_change: false,
+    http_url: "/post/:date/:title",
+  },
 
 ]);
 
@@ -44,7 +54,7 @@ routemamba.register_routes_headers([
 
     preloader: "loading...",
     error_content: "error",
-    http_url: ["/", "/features", "/pricing"],
+    http_url: ["/", "/features", "/pricing", "/post/:date/:title"],
   },
 ]);
 
@@ -54,7 +64,7 @@ routemamba.register_routes_footers([
 
     preloader: "loading...",
     error_content: "error",
-    http_url: ["/", "/features", "/pricing"],
+    http_url: ["/", "/features", "/pricing", "/post/:date/:title"],
   },
 ]);
 
