@@ -1,13 +1,13 @@
 // set server host
 routemamba.registerServerHost("http://localhost:3000/");
 // set meta content
-routemamba.registerMetaUrl("components/meta");
+routemamba.registerMetaUrl("/components/meta");
 
 routemamba.register_http_routes([
   {
     method: "GET",
     meta_loader: true,
-    content_url: "components/home",
+    content_url: "/components/home",
     data: {},
     preloader: "loading...",
     error_content: "error",
@@ -17,12 +17,22 @@ routemamba.register_http_routes([
   {
     method: "GET",
     meta_loader: true,
-    content_url: "components/about",
+    content_url: "/components/features",
     data: {},
     preloader: "loading...",
     error_content: "error",
     http_url_change: false,
-    http_url: "about",
+    http_url: "/features",
+  },
+  {
+    method: "GET",
+    meta_loader: true,
+    content_url: "/components/pricing",
+    data: {},
+    preloader: "loading...",
+    error_content: "error",
+    http_url_change: false,
+    http_url: "/pricing",
   },
 
 ]);
@@ -30,21 +40,21 @@ routemamba.register_http_routes([
 // Set pages headers
 routemamba.register_routes_headers([
   {
-    content_url: "components/header",
+    content_url: "/components/header",
 
     preloader: "loading...",
     error_content: "error",
-    http_url: ["/", "about"],
+    http_url: ["/", "/features", "/pricing"],
   },
 ]);
 
 routemamba.register_routes_footers([
   {
-    content_url: "components/footer",
+    content_url: "/components/footer",
 
     preloader: "loading...",
     error_content: "error",
-    http_url: ["/", "about"],
+    http_url: ["/", "/features", "/pricing"],
   },
 ]);
 

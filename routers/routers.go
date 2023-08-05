@@ -8,8 +8,10 @@ func getmeta(route string) string {
 	MetaTitle := "Hello, Meta!"
 	if route == "/" {
 		MetaTitle = "Home"
-	} else if route == "about" {
-		MetaTitle = "About"
+	} else if route == "features" {
+		MetaTitle = "Features"
+	} else if route == "pricing" {
+		MetaTitle = "Pricing"
 	}
 	return MetaTitle
 }
@@ -24,9 +26,16 @@ func RegisterRoutes(router fiber.Router) {
 		})
 	})
 
-	router.Get("/about", func(c *fiber.Ctx) error {
-		MetaTitle := getmeta("about")
-		return c.Render("about", fiber.Map{
+	router.Get("/features", func(c *fiber.Ctx) error {
+		MetaTitle := getmeta("features")
+		return c.Render("features", fiber.Map{
+			"MetaTitle": MetaTitle,
+		})
+	})
+
+	router.Get("/pricing", func(c *fiber.Ctx) error {
+		MetaTitle := getmeta("pricing")
+		return c.Render("pricing", fiber.Map{
 			"MetaTitle": MetaTitle,
 		})
 	})
@@ -44,22 +53,32 @@ func RegisterRoutes(router fiber.Router) {
 	})
 
 	components.Get("/header", func(c *fiber.Ctx) error {
-		return c.Render("components/headers/header", fiber.Map{
+		//  header.component.html = header.component
+		return c.Render("components/headers/header.component", fiber.Map{
 			"Title": "Hello, Header!",
 		})
 	})
 
 	components.Get("/footer", func(c *fiber.Ctx) error {
-		return c.Render("components/footers/footer", fiber.Map{
+		//  footer.component.html = footer.component
+		return c.Render("components/footers/footer.component", fiber.Map{
 			"Title": "Hello, Footer!",
 		})
 	})
 
 	components.Get("/home", func(c *fiber.Ctx) error {
-		return c.Render("components/home", fiber.Map{})
+		// home.component.html = home.component
+		return c.Render("components/home.component", fiber.Map{})
 	})
 
-	components.Get("/about", func(c *fiber.Ctx) error {
-		return c.Render("components/about", fiber.Map{})
+	components.Get("/features", func(c *fiber.Ctx) error {
+
+		// features.component.html = features.component
+		return c.Render("components/features.component", fiber.Map{})
+	})
+	components.Get("/pricing", func(c *fiber.Ctx) error {
+
+		// pricing.component.html = pricing.component
+		return c.Render("components/pricing.component", fiber.Map{})
 	})
 }
