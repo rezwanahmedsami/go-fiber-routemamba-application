@@ -8,7 +8,11 @@ function Navigatehandler(e){
     e.stopImmediatePropagation();
     let href = e.target.getAttribute("href");
     console.log("href: " + href);
-    routemamba.navigate(href);
+    routemamba.navigate(href, {}, {
+        meta_loader: true,
+        header_load: true,
+        footer_load: true,
+    });
 }
 Homenav.addEventListener("click", Navigatehandler);
 
